@@ -13,29 +13,30 @@ public class MainFace extends Face{
 		
 		happyCube.setMainFaceIndex(i);
 	}
-	// if the next face is main face and all the sides and corners are consistent then we found a global solution
-	public boolean findFace(HappyCube happyCube) {
+
+	public boolean sideAndCornerCheck(Face currentFace, HappyCube happyCube) {
 		return true;
 	}
 
-	public boolean findCube(HappyCube happyCube) {
+	public boolean findFace(HappyCube happyCube) {
 
 		Face[] faceList = happyCube.getFaces();
 		
-		int mostSymmetricFace = Face.findMostSymmetricFace(faceList);
-
-		Face mainFace = faceList[mostSymmetricFace];
-		mainFace.setUsed(true);
-		setHappyCubeFaceIndex(happyCube, mostSymmetricFace);
-		for (EnumOrientation orientation : EnumOrientation.values()) {
-			mainFace.rotate(orientation);
-			if(getNextFace().findFace(happyCube)){
-				return true;
-			}
+		boolean allUsed = true;
+		for (Face face : faceList) {
+			if(!face.isUsed())
+				allUsed = false;
 		}
 		
-		return false;
+		if(allUsed)
+			return true;
+		
+		int mostSymmetricFace = Face.findMostSymmetricFace(faceList);
 
+		Face mainFace = faceList[mostSymmetricFace];	
+		mainFace.setUsed(true);
+		setHappyCubeFaceIndex(happyCube, mostSymmetricFace);
+		return getNextFace().findFace(happyCube);
 	}
 
 }

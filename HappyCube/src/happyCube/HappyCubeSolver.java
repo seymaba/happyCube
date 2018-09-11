@@ -9,7 +9,7 @@ public class HappyCubeSolver {
 	
 		HappyCube happyCube = CubeReader.readFaces();
 		
-		if(new MainFace().findCube(happyCube)){
+		if(new MainFace().findFace(happyCube)){
 			happyCube.print();
 			return;
 		}
