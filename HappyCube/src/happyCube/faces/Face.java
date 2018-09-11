@@ -260,6 +260,9 @@ public class Face {
 	
 	public boolean findFace(HappyCube happyCube) {
 
+		if(happyCube == null)
+			return false;
+		
 		Face[] faceList = happyCube.getFaces();
 				
 		for (int i =0;i<faceList.length; i++) {

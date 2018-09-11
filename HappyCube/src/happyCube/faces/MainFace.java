@@ -20,6 +20,9 @@ public class MainFace extends Face{
 
 	public boolean findFace(HappyCube happyCube) {
 
+		if(happyCube == null)
+			return false;
+		
 		Face[] faceList = happyCube.getFaces();
 		
 		boolean allUsed = true;
