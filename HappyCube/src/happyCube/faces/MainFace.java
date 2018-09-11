@@ -25,6 +25,8 @@ public class MainFace extends Face{
 		
 		Face[] faceList = happyCube.getFaces();
 		
+		// find face in main face is called after the last face is fitted
+		// if all the faces are used it means we found a working solution
 		boolean allUsed = true;
 		for (Face face : faceList) {
 			if(!face.isUsed())
@@ -34,6 +36,8 @@ public class MainFace extends Face{
 		if(allUsed)
 			return true;
 		
+		// entry point in main class
+		// start with most symmetric face
 		int mostSymmetricFace = Face.findMostSymmetricFace(faceList);
 
 		Face mainFace = faceList[mostSymmetricFace];	

@@ -75,6 +75,18 @@ public class Face {
 		this.orientation = orientation;
 	}
 
+	public Face getNextFace() {
+		// inherited face objects return the next face object to find in the following order
+		// main -> right -> upper -> left -> bottom -> other
+		return null;
+	}
+	
+	protected void setHappyCubeFaceIndex(HappyCube happyCube, int i) {
+		// inherited face objects sets the related face index of happy cube 
+		// when the consistent face is found.
+	}
+	
+	// rotate face in the given orientation
 	public void rotate(EnumOrientation orientation){
 		
 		int curOrId = this.orientation.getOrientationId();
@@ -184,7 +196,7 @@ public class Face {
 		
 	public static void printThreeFaces(Face leftFace, Face mainFace, Face rightFace){
 		
-		// print three faces side by side
+		// print three faces side by side for printing the happy cube in unfolded format
 		
 		System.out.print(leftFace.getSides()[0].getSideInOriginalRepresentation());
 		System.out.print(mainFace.getSides()[0].getSideInOriginalRepresentation());
@@ -254,6 +266,7 @@ public class Face {
 		return ((i+j+k) == 1);
 	}
 
+	// inherited objects apply different consistency checks
 	public boolean sideAndCornerCheck(Face currentFace, HappyCube happyCube) {
 		return false;
 	}
@@ -287,17 +300,6 @@ public class Face {
 		}
 		
 		return false;
-	}
-	
-	public Face getNextFace() {
-		// inherited face objects return the next face object to find in the following order
-		// main -> right -> upper -> left -> bottom -> other
-		return null;
-	}
-	
-	protected void setHappyCubeFaceIndex(HappyCube happyCube, int i) {
-		// inherited face objects sets the related face index of happy cube 
-		// when the consistent face is found.
 	}
 	
 	public static int findMostSymmetricFace(Face[] faceList) {
