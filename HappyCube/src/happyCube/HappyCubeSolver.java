@@ -5,7 +5,7 @@ import happyCube.reader.CubeReader;
 
 public class HappyCubeSolver {
 	
-	public static final String FILEPATH_CUBE = "cube.txt";
+	public static final String FILEPATH_CUBE = "resources/cube.txt";
 	
 	public static void main(String[] args){
 	
